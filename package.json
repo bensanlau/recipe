@@ -1,5 +1,5 @@
 {
-  "name": "d4l-mock-survey",
+  "name": "recipe",
   "private": true,
   "version": "0.0.1",
   "description": "Stencil App Starter",
@@ -16,7 +16,12 @@
     "@types/jest": "^27.0.3",
     "jest": "^27.4.5",
     "jest-cli": "^27.4.5",
-    "puppeteer": "^10.0.0"
+    "puppeteer": "^10.0.0",
+    "stencil-inline-svg": "^1.1.0",
+    "stencil-router-v2": "^0.6.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@d4l/web-components-library": "^3.15.1"
+  }
 }

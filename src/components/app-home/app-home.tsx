@@ -2,22 +2,20 @@ import { Component, h } from '@stencil/core';
 
 @Component({
   tag: 'app-home',
-  styleUrl: 'app-home.css',
-  shadow: true,
+  shadow: false,
 })
-export class AppHome {
+export class AppRoot {
   render() {
     return (
-      <div class="app-home">
-        <p>
-          Welcome to the Stencil App Starter. You can use this starter to build entire apps all with web components using Stencil! Check out our docs on{' '}
-          <a href="https://stenciljs.com">stenciljs.com</a> to get started.
-        </p>
+      <d4l-card classes="card--round-corners-l card--text-center">
+        <div slot="card-header">
+          <h2>What's in my fridge?</h2>
+          <p>Let's find a recipe you can cook with.</p>
+        </div>
+        <div slot="card-content">
+        </div>
 
-        <stencil-route-link url="/profile/stencil">
-          <button>Profile page</button>
-        </stencil-route-link>
-      </div>
+      </d4l-card>
     );
   }
 }

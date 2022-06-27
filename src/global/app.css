@@ -7,9 +7,33 @@
 
   Any global CSS variables should also be applied here.
 */
+@import '~@d4l/web-components-library/dist/d4l-ui/d4l-ui.css';
+
+:root {
+  --font-family-secondary: 'Montserrat';
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 body {
-  margin: 0px;
-  padding: 0px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  background: linear-gradient(304deg, rgba(255,109,222,0), rgba(120,95,106,0.6));
+  font-family: var(--font-family-secondary);
+  min-height: 100vh;
+}
+
+a {
+  color: currentColor;
+}
+
+a:hover {
+  color: var(--color-secondary);
+}
+
+.wrapper {
+  max-width: 675px;
+  margin: auto;
 }
