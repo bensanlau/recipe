@@ -8,18 +8,21 @@ import { SUGGESTIONS } from '../../global/constants';
 export class AppRoot {
   @State() items: Array<string> = [];
 
-  handleTag(event: Event) {
-    console.log(event.target);
+  handleTag(item: string) {
+    const list = [...this.items, item];
+    this.items = list;
   }
 
   renderSuggestions() {
     if (SUGGESTIONS) {
-      return (<div class="suggestions">
-        <h4>Quick suggestions</h4>
-        <ul>{Object.keys(SUGGESTIONS).map((item) => 
-          <li><d4l-tag text={item} classes='suggestions__tag' handleClick={this.handleTag}/></li>
-        )}</ul>
-      </div>);
+      return (
+        <div class="suggestions">
+          <h4>Quick suggestions</h4>
+          <ul>{Object.entries(SUGGESTIONS).map(([icon, item]) =>
+            <li><d4l-tag text={`${icon} ${item}`} classes='suggestions__tag' handleClick={() => this.handleTag(item)}/></li>
+          )}</ul>
+        </div>
+      );
     }
   }
 
