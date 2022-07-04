@@ -26,6 +26,10 @@ export class AppRoot {
     }
   }
 
+  submitList() {
+    console.log('hi');
+  }
+
   renderList() {
     if (this.items.length) {
       return (
@@ -33,7 +37,7 @@ export class AppRoot {
           <ul class="search-list">
             {this.items.map((item) => <li>{item}</li>)}
           </ul>
-          <d4l-button text='Submit' />
+          <d4l-button text='Submit' onClick={() => this.submitList()} />
         </div>
       )
     } else {

@@ -5,10 +5,12 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { RouterHistory } from "@stencil/router";
 export namespace Components {
     interface AppHome {
     }
     interface AppRoot {
+        "history": RouterHistory;
     }
     interface IImprint {
     }
@@ -51,6 +53,7 @@ declare namespace LocalJSX {
     interface AppHome {
     }
     interface AppRoot {
+        "history"?: RouterHistory;
     }
     interface IImprint {
     }
