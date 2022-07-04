@@ -48,8 +48,8 @@ export class AppRoot {
         />
 
         <main>
-          <stencil-router>
-            <stencil-route-switch scrollTopOffset={0}>
+          <stencil-router root="/">
+            <stencil-route-switch>
               <stencil-route url="/" component="app-home" exact={true} />
               <stencil-route url={ROUTES.IMPRINT} component="i-imprint" />
               <stencil-route url={ROUTES.TERMS} component="i-terms" />
