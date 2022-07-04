@@ -1,9 +1,9 @@
 import { Component, h, Host, Prop } from '@stencil/core';
-import { RouterHistory } from '@stencil/router';
-// import StencilLogo from '../../assets/logos/stenciljs-logo.svg';
+import StencilLogo from '../../assets/logos/stenciljs-logo.svg';
 import { ROUTES } from '../../global/constants';
+import { RouterHistory } from '@stencil/router';
 
-const routes = [
+const menuItems = [
   {
     text: 'Search',
     route: '/',
@@ -16,22 +16,11 @@ const routes = [
   },
 ]
 
-// const footerLinks = [
-//   {
-//     url: ROUTES.TERMS,
-//     text: 'Terms',
-//     target: '_self',
-//   },
-//   {
-//     url: ROUTES.IMPRINT,
-//     text: 'Imprint',
-//     target: '_self',
-//   },
-//   {
-//     url: 'https://github.com/bensanlau/recipe',
-//     text: 'Source',
-//   },
-// ]
+const footerLinks = [
+  { url: ROUTES.TERMS, text: 'Terms', },
+  { url: ROUTES.IMPRINT, text: 'Imprint', },
+  { url: 'https://github.com/bensanlau/recipe', text: 'Source', external: true, },
+]
 @Component({
   tag: 'app-root',
   styleUrl: 'app-root.css',
@@ -40,19 +29,22 @@ const routes = [
 export class AppRoot {
   @Prop() history: RouterHistory;
 
-  componentDidRender() {
-    console.log(this.history);
-  }
-
-  footerClick(event) {
-    event.preventDefault();
+  renderFooterLinks() {
+    // return footerLinks.map((link) => 
+    //   link.external ? <stencil-route-link url={link.url}>{link.text}</stencil-route-link>
+    //     : <stencil-route-link class="app-footer__link" url={link.url}>{link.text}</stencil-route-link>
+    // );
+    return footerLinks.map((link) => 
+      link.external ? <a href={link.url} target="_blank" rel="noreferrer">{link.text}</a>
+        : <a onClick={() => this.history.push(link.url)} href={link.url}>{link.text}</a>
+    );
   }
 
   render() {
     return (
       <Host>
         <d4l-app-header
-          menuNavigationItems={routes}
+          menuNavigationItems={menuItems}
           customLogo='/assets/logos/logo.png'
           logoUrlText="What's in my fridge App"
         />
@@ -78,11 +70,12 @@ export class AppRoot {
             {/* <li><a class="app-footer__link" target="_self" rel="false">Terms</a></li>
             <li><a onClick={() => this.history.push('/imprint')} class="app-footer__link" target="_self" rel="false">Imprint</a></li>
             <li><a class="app-footer__link" href="https://github.com/bensanlau/recipe" target="_blank" rel="noopener">Source</a></li> */}
-            <li><stencil-route-link url="/imprint">Imprint</stencil-route-link></li>
+            {/* <li><stencil-route-link class="app-footer__link" url="/imprint">Imprint</stencil-route-link></li> */}
+            {this.renderFooterLinks()}
           </ul>
           <div class="app-footer__copyright-info">
             <p class="copyright-info" slot="copyright-info">
-              Made in 🇩🇪 with <a href="https://stenciljs.com/" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 23"><path d="M32.25 13.13h3.35c.05.814.655 1.579 2.027 1.579 1.261 0 1.907-.443 1.907-1.117 0-2.042-6.77-.12-6.77-4.94 0-2.203 1.887-4.014 4.893-4.014 3.652 0 4.913 2.324 5.004 4.105h-3.188c-.07-.765-.655-1.459-1.836-1.459-1.07 0-1.675.513-1.675 1.187 0 2.043 6.75 0 6.75 4.99 0 2.184-1.867 3.904-5.166 3.904-3.833-.01-5.135-1.962-5.296-4.236ZM47.04 4.91V2.083h-3.31v14.99h3.31V7.596h2.43V4.91h-2.43Z"></path><path d="M52.184 11.942c.233 1.67 1.302 2.576 2.956 2.576 1 0 1.957-.443 2.35-1.328h3.33c-.726 2.465-2.956 4.155-5.77 4.155-3.612 0-6.144-2.646-6.144-6.379 0-3.601 2.512-6.338 6.123-6.338 3.612 0 6.053 2.737 6.053 6.338 0 .534-.05.976-.05.976h-8.848Zm.04-2.364h5.54c-.233-1.368-1.232-2.294-2.775-2.294-1.503 0-2.482.906-2.764 2.294ZM65.35 6.399c.555-1.047 1.816-1.76 3.632-1.76 2.935 0 4.489 1.95 4.489 4.848v7.586h-3.31V9.85c0-1.419-.605-2.395-2.067-2.395-1.604 0-2.492 1.026-2.492 2.646v6.962h-3.309V4.91h3.057v1.489ZM80.815 4.638c3.793 0 5.589 2.666 5.82 4.739h-3.399c-.252-1.047-1.23-1.811-2.441-1.811-1.766 0-2.795 1.388-2.795 3.43 0 2.043 1.03 3.431 2.795 3.431 1.21 0 2.189-.764 2.441-1.81h3.4c-.232 2.062-2.028 4.738-5.821 4.738-3.541 0-6.124-2.737-6.124-6.359 0-3.621 2.583-6.358 6.124-6.358ZM87.513 1.992C87.513.835 88.351 0 89.511 0c1.16 0 1.997.835 1.997 1.992s-.837 1.972-1.997 1.972c-1.15 0-1.998-.805-1.998-1.972Zm.353 2.918h3.31v12.163h-3.31V4.91ZM92.94 17.073V.765h3.31v16.308h-3.31ZM9.838 14.066h10.02L14.441 20H4.476l5.363-5.934ZM26.25 7.033H5.664L.25 12.967h20.586l5.414-5.934ZM12.041 0h9.984l-5.392 5.934H6.642L12.042 0Z"></path></svg></a>
+              Made in 🇩🇪 with <a href="https://stenciljs.com/" target="_blank" rel="noopener" innerHTML={StencilLogo}></a>
             </p>
           </div>
         </footer>
