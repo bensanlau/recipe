@@ -11,7 +11,7 @@ export const config: Config = {
     {
       type: 'www',
       serviceWorker: null,
-      baseUrl: '/',
+      copy: [{ src: '_redirects' }],
     },
   ],
   plugins: [inlineSvg()],

@@ -1,7 +1,7 @@
 import { Component, h, Host, Prop } from '@stencil/core';
+import { RouterHistory } from '@stencil/router';
 import StencilLogo from '../../assets/logos/stenciljs-logo.svg';
 import { ROUTES } from '../../global/constants';
-import { RouterHistory } from '@stencil/router';
 
 const menuItems = [
   {
@@ -30,13 +30,10 @@ export class AppRoot {
   @Prop() history: RouterHistory;
 
   renderFooterLinks() {
-    // return footerLinks.map((link) => 
-    //   link.external ? <stencil-route-link url={link.url}>{link.text}</stencil-route-link>
-    //     : <stencil-route-link class="app-footer__link" url={link.url}>{link.text}</stencil-route-link>
-    // );
     return footerLinks.map((link) => 
-      link.external ? <a href={link.url} target="_blank" rel="noreferrer">{link.text}</a>
-        : <a onClick={() => this.history.push(link.url)} href={link.url}>{link.text}</a>
+      link.external ? <li><a href={link.url} target="_blank" rel="noreferrer">{link.text}</a></li>
+        // : <li><stencil-route-link class="lump" activeClass='app-footer__item--active' url={link.url}>{link.text}</stencil-route-link></li>
+        : <li><a href={link.url} onClick={() => this.history.push(link.url)}>{link.text}</a></li>
     );
   }
 
@@ -50,7 +47,7 @@ export class AppRoot {
         />
 
         <main>
-          <stencil-router root="/">
+          <stencil-router>
             <stencil-route-switch>
               <stencil-route url="/" component="app-home" exact={true} />
               <stencil-route url={ROUTES.IMPRINT} component="i-imprint" />
@@ -67,10 +64,6 @@ export class AppRoot {
 
         <footer class="app-footer u-font-size--small">
           <ul class="u-list-reset">
-            {/* <li><a class="app-footer__link" target="_self" rel="false">Terms</a></li>
-            <li><a onClick={() => this.history.push('/imprint')} class="app-footer__link" target="_self" rel="false">Imprint</a></li>
-            <li><a class="app-footer__link" href="https://github.com/bensanlau/recipe" target="_blank" rel="noopener">Source</a></li> */}
-            {/* <li><stencil-route-link class="app-footer__link" url="/imprint">Imprint</stencil-route-link></li> */}
             {this.renderFooterLinks()}
           </ul>
           <div class="app-footer__copyright-info">

@@ -1,4 +1,20 @@
 /* Footer */
+.app-footer a {
+  cursor: pointer;
+  color: var(--color-neutral);
+  font-weight: var(--link-font-weight);
+  text-decoration: none;
+}
+
+.app-footer a:hover,
+.app-footer a:focus {
+  text-decoration: underline;
+}
+
+.app-footer .app-footer__item--active {
+  color: var(--color-secondary);
+}
+
 .copyright-info {
   display: flex;
   align-items: center;
