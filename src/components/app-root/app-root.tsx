@@ -40,14 +40,14 @@ export class AppRoot {
 
   render() {
     return (
-      <Host>
-        <d4l-app-header
-          menuNavigationItems={routes}
-          customLogo='/assets/logos/logo.png'
-          logoUrlText="What's in my fridge App"
-        />
+      // <Host>
+      //   <d4l-app-header
+      //     menuNavigationItems={routes}
+      //     customLogo='/assets/logos/logo.png'
+      //     logoUrlText="What's in my fridge App"
+      //   />
 
-        <main>
+        // <main>
           <stencil-router>
             <stencil-route-switch scrollTopOffset={0}>
               <stencil-route url="/" component="app-home" exact={true} />
@@ -55,14 +55,14 @@ export class AppRoot {
               <stencil-route url={ROUTES.TERMS} component="i-terms" />
             </stencil-route-switch>
           </stencil-router>
-        </main>
+        // </main>
 
-        <d4l-app-footer footerLinks={footerLinks}>
-          <p class="copyright-info" slot="copyright-info">
-            Made in 🇩🇪 with <a href="https://stenciljs.com/" target="_blank" rel="noopener" innerHTML={StencilLogo}></a>
-          </p>
-        </d4l-app-footer>
-      </Host>
+      //   <d4l-app-footer footerLinks={footerLinks}>
+      //     <p class="copyright-info" slot="copyright-info">
+      //       Made in 🇩🇪 with <a href="https://stenciljs.com/" target="_blank" rel="noopener" innerHTML={StencilLogo}></a>
+      //     </p>
+      //   </d4l-app-footer>
+      // </Host>
     );
   }
 }
