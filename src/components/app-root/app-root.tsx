@@ -1,5 +1,4 @@
-import { Component, h, Host, Prop } from '@stencil/core';
-import { RouterHistory } from '@stencil/router';
+import { Component, h, Host } from '@stencil/core';
 import StencilLogo from '../../assets/logos/stenciljs-logo.svg';
 import { ROUTES } from '../../global/constants';
 
@@ -17,9 +16,9 @@ const menuItems = [
 ]
 
 const footerLinks = [
-  { url: ROUTES.TERMS, text: 'Terms', },
-  { url: ROUTES.IMPRINT, text: 'Imprint', },
-  { url: 'https://github.com/bensanlau/recipe', text: 'Source', external: true, },
+  { url: ROUTES.TERMS, text: 'Terms', target: '_self', },
+  { url: ROUTES.IMPRINT, text: 'Imprint', target: '_self', },
+  { url: 'https://github.com/bensanlau/recipe', text: 'Source' },
 ]
 @Component({
   tag: 'app-root',
@@ -27,16 +26,6 @@ const footerLinks = [
   shadow: false,
 })
 export class AppRoot {
-  @Prop() history: RouterHistory;
-
-  renderFooterLinks() {
-    return footerLinks.map((link) => 
-      link.external ? <li><a href={link.url} target="_blank" rel="noreferrer">{link.text}</a></li>
-        // : <li><stencil-route-link class="lump" activeClass='app-footer__item--active' url={link.url}>{link.text}</stencil-route-link></li>
-        : <li><a href={link.url} onClick={() => this.history.push(link.url)}>{link.text}</a></li>
-    );
-  }
-
   render() {
     return (
       <Host>
@@ -56,22 +45,11 @@ export class AppRoot {
           </stencil-router>
         </main>
 
-        {/* <d4l-app-footer footerLinks={footerLinks}>
+        <d4l-app-footer footerLinks={footerLinks}>
           <p class="copyright-info" slot="copyright-info">
             Made in 🇩🇪 with <a href="https://stenciljs.com/" target="_blank" rel="noopener" innerHTML={StencilLogo}></a>
           </p>
-        </d4l-app-footer> */}
-
-        <footer class="app-footer u-font-size--small">
-          <ul class="u-list-reset">
-            {this.renderFooterLinks()}
-          </ul>
-          <div class="app-footer__copyright-info">
-            <p class="copyright-info" slot="copyright-info">
-              Made in 🇩🇪 with <a href="https://stenciljs.com/" target="_blank" rel="noopener" innerHTML={StencilLogo}></a>
-            </p>
-          </div>
-        </footer>
+        </d4l-app-footer>
       </Host>
     );
   }
