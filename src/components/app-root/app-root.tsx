@@ -1,5 +1,6 @@
 import { Component, h, Host } from '@stencil/core';
 import StencilLogo from '../../assets/logos/stenciljs-logo.svg';
+import { createRouter } from 'stencil-router-v2';
 import { ROUTES } from '../../global/constants';
 
 const menuItems = [
@@ -16,7 +17,7 @@ const menuItems = [
 ]
 
 const footerLinks = [
-  { url: ROUTES.TERMS, text: 'Terms', target: '_self', },
+  { url: ROUTES.TERMS, text: 'Terms', isStencilRoute: true },
   { url: ROUTES.IMPRINT, text: 'Imprint', target: '_self', },
   { url: 'https://github.com/bensanlau/recipe', text: 'Source' },
 ]
@@ -32,7 +33,10 @@ export class AppRoot {
         <d4l-app-header
           menuNavigationItems={menuItems}
           customLogo='/assets/logos/logo.png'
-          logoUrlText="What's in my fridge App"
+          logoUrlText="Home logo"
+          logoUrlTitle="What's in my fridge App"
+          logoUrl='/'
+          router={createRouter()}
         />
 
         <main>
