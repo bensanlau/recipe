@@ -5,12 +5,18 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { RouterHistory } from "@stencil/router";
 export namespace Components {
     interface AppHome {
+        "history": RouterHistory;
+    }
+    interface AppListing {
     }
     interface AppRoot {
     }
     interface IImprint {
+    }
+    interface IResults {
     }
     interface ITerms {
     }
@@ -21,6 +27,12 @@ declare global {
     var HTMLAppHomeElement: {
         prototype: HTMLAppHomeElement;
         new (): HTMLAppHomeElement;
+    };
+    interface HTMLAppListingElement extends Components.AppListing, HTMLStencilElement {
+    }
+    var HTMLAppListingElement: {
+        prototype: HTMLAppListingElement;
+        new (): HTMLAppListingElement;
     };
     interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {
     }
@@ -34,6 +46,12 @@ declare global {
         prototype: HTMLIImprintElement;
         new (): HTMLIImprintElement;
     };
+    interface HTMLIResultsElement extends Components.IResults, HTMLStencilElement {
+    }
+    var HTMLIResultsElement: {
+        prototype: HTMLIResultsElement;
+        new (): HTMLIResultsElement;
+    };
     interface HTMLITermsElement extends Components.ITerms, HTMLStencilElement {
     }
     var HTMLITermsElement: {
@@ -42,24 +60,33 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "app-home": HTMLAppHomeElement;
+        "app-listing": HTMLAppListingElement;
         "app-root": HTMLAppRootElement;
         "i-imprint": HTMLIImprintElement;
+        "i-results": HTMLIResultsElement;
         "i-terms": HTMLITermsElement;
     }
 }
 declare namespace LocalJSX {
     interface AppHome {
+        "history"?: RouterHistory;
+    }
+    interface AppListing {
     }
     interface AppRoot {
     }
     interface IImprint {
     }
+    interface IResults {
+    }
     interface ITerms {
     }
     interface IntrinsicElements {
         "app-home": AppHome;
+        "app-listing": AppListing;
         "app-root": AppRoot;
         "i-imprint": IImprint;
+        "i-results": IResults;
         "i-terms": ITerms;
     }
 }
@@ -68,8 +95,10 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
+            "app-listing": LocalJSX.AppListing & JSXBase.HTMLAttributes<HTMLAppListingElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "i-imprint": LocalJSX.IImprint & JSXBase.HTMLAttributes<HTMLIImprintElement>;
+            "i-results": LocalJSX.IResults & JSXBase.HTMLAttributes<HTMLIResultsElement>;
             "i-terms": LocalJSX.ITerms & JSXBase.HTMLAttributes<HTMLITermsElement>;
         }
     }

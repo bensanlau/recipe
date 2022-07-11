@@ -1,11 +1,13 @@
-import { Component, h, State } from '@stencil/core';
+import { Component, h, State, Prop } from '@stencil/core';
 import { SUGGESTIONS } from '../../global/constants';
+import { RouterHistory } from '@stencil/router';
 
 @Component({
   tag: 'app-home',
   styleUrl: 'app-home.css',
 })
 export class AppRoot {
+  @Prop() history: RouterHistory;
   @State() items: Array<string> = [];
 
   handleTag(item: string) {
@@ -26,8 +28,29 @@ export class AppRoot {
     }
   }
 
+  get suggestedRecipes() {
+    // await
+
+    return 'foo';
+    // try {
+    //   let response = await fetch('https://someapi.com/data');
+    //   if (!response.ok) {
+    //     throw new Error(response.statusText);
+    //   }
+    //   let json = await response.json();
+    // } catch (err) {
+    //   console.log(err);
+    // }
+  }
+
   submitList() {
-    console.log('hi');
+    // example: https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&number=2
+    // https://api.spoonacular.com/recipes/findByIngredients?apiKey=9ee43fd60989499b8a55d5debb42e5ef&ingredients=
+    console.log(this.items);
+    let ingredients = this.items.join(',+').toLowerCase();
+
+    console.log(this.suggestedRecipes);
+    // this.history.push(`/results`);
   }
 
   renderList() {

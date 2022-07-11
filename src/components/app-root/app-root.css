@@ -1,4 +1,26 @@
-/* Footer */
+.app-footer {
+  margin: 45px auto 0;
+  padding: var(--space-s);
+  width: var(--widescreen);
+  max-width: 100%;
+  color: var(--color-neutral);
+}
+
+.app-footer ul {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.app-footer ul li {
+  display: flex;
+  flex-basis: 100%;
+  justify-content: center;
+  color: var(--color-neutral);
+  margin-bottom: var(--space-m);
+}
+
 .app-footer a {
   cursor: pointer;
   color: var(--color-neutral);
@@ -30,4 +52,11 @@
 
 .copyright-info svg:hover {
   fill: var(--color-primary);
+}
+
+@media screen and (min-width: 768px) {
+  .app-footer ul {
+    flex-flow: row nowrap;
+    max-width: 800px;
+  }
 }

@@ -1,5 +1,4 @@
 import { Component, h } from '@stencil/core';
-// import { MatchResults } from '@stencil/router';
 
 @Component({
   tag: 'i-imprint',
