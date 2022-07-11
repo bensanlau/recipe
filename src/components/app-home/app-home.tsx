@@ -47,7 +47,7 @@ export class AppRoot {
     // example: https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&number=2
     // https://api.spoonacular.com/recipes/findByIngredients?apiKey=9ee43fd60989499b8a55d5debb42e5ef&ingredients=
     console.log(this.items);
-    let ingredients = this.items.join(',+').toLowerCase();
+    // let ingredients = this.items.join(',+').toLowerCase();
 
     console.log(this.suggestedRecipes);
     // this.history.push(`/results`);
